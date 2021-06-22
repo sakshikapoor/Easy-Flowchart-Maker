@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.round-stop, .round-start {
+    background-color: #ff5c5c;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    color: black;
+}
+
+.steps {
+    margin: 0.5em;
+    cursor: pointer;
+    box-shadow: rgb(0 0 0 / 57%) 0px 8px 24px;
+    transition: transform .2s; 
+    text-align: center;
+}
+.steps:hover {
+    transform: scale(1.1);
+}
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    z-index: 1;
+}
+.options > button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform .2s; 
+}
+
+.options > button:hover {
+    transform: scale(1.05);
+}
+
+.options > .add-step {
+    background-color: rgb(52, 214, 201);
+}
+.options > .stop {
+    background-color: rgb(248, 69, 56);
+    color: white;
+}
+
+.hide {
+    display: none;
+}
+.rectangle {
+    width: 10em;
+    height: 5em;
+    background: #e0e0e0;
+    border-radius: 0.5em;
+}
+.diamond {
+    height: 2em;
+    width: 2em;
+    background: #b435a3;
+    border-radius: 0.5em;
+    transform: rotate(45deg);
+}
+.diamond:hover {
+    transform: rotate(45deg);
+}
+
+.decision-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

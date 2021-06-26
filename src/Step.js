@@ -77,7 +77,7 @@ const Step = (props) => {
     const stepsClass = 'steps ' + getClass(details.type);
 
     useEffect(() => {
-        if (details.type === 'decision' || details.type === 'stop') {
+        if (details.type === 'decision') {
             setChildrenAdded(true);
             setTextareaReadOnly(true);
         }
@@ -100,17 +100,21 @@ const Step = (props) => {
         setChildrenAdded(false);
     }
 
+    const showDelete = () => {
+        return display && childrenAdded && !['decision', 'stop'].includes(details.type);
+    }
+
     return (
         <div>
             <div className="container" onMouseEnter={e => setDisplay(true)} onMouseLeave={e => setDisplay(false)}>
                 <img className="arrow" src={downArrow} alt="down-arrow" />
                 <textarea rows="2" cols="20" wrap="hard" className={stepsClass} readOnly={textareaReadOnly} />
-                <div className={`${display && !childrenAdded ? "options" : "hide"}`}>
+                <div className={`${display && !childrenAdded && details.type !== 'stop' ? "options" : "hide"}`}>
                     <button className="add-step" onClick={addNewStep}>Add</button>
                     <button className="add-step" onClick={addNewDecision}>Decide</button>
                     <button className="stop" onClick={addNewEnd}>Stop</button>
                 </div>
-                <div className={`${display && childrenAdded && details.type !== 'decision' ? "show" : "hide"}`}>
+                <div className={`${showDelete() ? "show" : "hide"}`}>
                     <button className="delete" onClick={deleteChildren}>Delete child nodes</button>
                 </div>
             </div>

@@ -61,3 +61,22 @@ text-align: center;
   text-align: center;
   font-size: 1.3em;
 }
+
+@media screen and (max-width: 767px) {
+  .flowchart-name {
+    width: 100%;
+  }
+  .heading {
+    text-align: center;
+    width: 100%;
+  }
+
+  .refresh {
+      top: 6em;
+      right: 1.5em;
+  }
+  .print {
+      top: 10em;
+      right: 1.5em;
+  }
+}

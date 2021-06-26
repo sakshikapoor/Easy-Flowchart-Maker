@@ -108,6 +108,7 @@
     cursor: pointer;
     border: none;
     top: 0;
+    z-index: 1;
     border-radius: 10px;
     padding: 10px;
     background: #424242;

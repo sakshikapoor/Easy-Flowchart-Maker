@@ -6,7 +6,6 @@ function refreshPage() {
   window.location.reload();
 }
 
-
 function App() {
   const initialDetails = {
     type: 'start',
@@ -15,9 +14,9 @@ function App() {
   }
   return (
     <div className="background">
-      <div className="heading">Easy FlowChart Maker</div>
-      <h2>Hover on start</h2>
-      <div className="flow">
+      <div className="heading">Tree FlowChart Maker</div>
+      <h2>Click on element to add text</h2>
+      <div className="flow" id="flow">
         <Step details={initialDetails} />
       </div>
       <img src={refresh} className="refresh" alt="refresh" onClick={refreshPage} />

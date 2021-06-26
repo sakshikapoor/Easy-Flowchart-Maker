@@ -1,5 +1,6 @@
 import './Step.css';
 import { useState, useEffect } from "react";
+import downArrow from './images/down-arrow.png';
 
 function getClass(type) {
     switch (type) {
@@ -30,9 +31,17 @@ function addDecision() {
     return (
         <div>
             <Step details={decisionDetails} />
+            <img className="arrow" src={downArrow} alt="down-arrow" />
             <div className="decision-container">
-                <Step details={stepDetails} />
-                <Step details={stepDetails} />
+                <div>
+                    <div className="leftLine"></div>
+                    <Step details={stepDetails} />
+                </div>
+                <div>
+                    <div className="rightLine"></div>
+                    <Step details={stepDetails} />
+                </div>
+
             </div>
         </div>
     )
@@ -42,14 +51,20 @@ function addEnd() {
     const stepDetails = {
         type: 'stop'
     }
-    return <Step details={stepDetails} />
+    return (<div>
+        <Step details={stepDetails} />
+    </div>);
+
 }
 
 function addStep() {
     const stepDetails = {
         type: 'one-step'
     }
-    return <Step details={stepDetails} />
+    return (<div>
+        <Step details={stepDetails} />
+    </div>)
+
 }
 
 
@@ -57,16 +72,14 @@ const Step = (props) => {
     const [display, setDisplay] = useState(false);
     const [nextSteps, setNextStep] = useState(null);
     const [childrenAdded, setChildrenAdded] = useState(false);
-    const [placeholderText, setPlaceholderText] = useState('');
+    const [textareaReadOnly, setTextareaReadOnly] = useState(false);
     const details = props.details;
     const stepsClass = 'steps ' + getClass(details.type);
 
     useEffect(() => {
         if (details.type === 'decision' || details.type === 'stop') {
             setChildrenAdded(true);
-        }
-        if (details.type === 'start') {
-            setPlaceholderText('Start')
+            setTextareaReadOnly(true);
         }
     }, [details.type]);
 
@@ -82,15 +95,23 @@ const Step = (props) => {
         setNextStep(addEnd());
         setChildrenAdded(true);
     }
+    const deleteChildren = () => {
+        setNextStep(null);
+        setChildrenAdded(false);
+    }
 
     return (
         <div>
             <div className="container" onMouseEnter={e => setDisplay(true)} onMouseLeave={e => setDisplay(false)}>
-                <input type="text" placeholder={placeholderText} className={stepsClass} />
+                <img className="arrow" src={downArrow} alt="down-arrow" />
+                <textarea rows="2" cols="20" wrap="hard" className={stepsClass} readOnly={textareaReadOnly} />
                 <div className={`${display && !childrenAdded ? "options" : "hide"}`}>
                     <button className="add-step" onClick={addNewStep}>Add</button>
                     <button className="add-step" onClick={addNewDecision}>Decide</button>
                     <button className="stop" onClick={addNewEnd}>Stop</button>
+                </div>
+                <div className={`${display && childrenAdded && details.type !== 'decision' ? "show" : "hide"}`}>
+                    <button className="delete" onClick={deleteChildren}>Delete child nodes</button>
                 </div>
             </div>
             <div id="next-steps">{nextSteps}</div>

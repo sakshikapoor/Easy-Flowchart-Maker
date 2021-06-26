@@ -3,22 +3,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
 }
 
 .round-stop, .round-start {
-    background-color: #ff5c5c;
+    background-color: #F7DBF0;
     height: 5em;
     width: 5em;
     border-radius: 50%;
+    border: none;
     color: black;
 }
 
 .steps {
     margin: 0.5em;
     cursor: pointer;
-    box-shadow: rgb(0 0 0 / 57%) 0px 8px 24px;
     transition: transform .2s; 
     text-align: center;
+    resize: none;
+    display:inline-block; 
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align:middle;
 }
 .steps:hover {
     transform: scale(1.1);
@@ -28,6 +35,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     z-index: 1;
+    max-width: min-content;
 }
 .options > button {
     background-color: white;
@@ -44,10 +52,11 @@
 }
 
 .options > .add-step {
-    background-color: rgb(52, 214, 201);
+    background-color: #4acab5;
+    color: white;
 }
 .options > .stop {
-    background-color: rgb(248, 69, 56);
+    background-color: #ee8bd5;
     color: white;
 }
 
@@ -57,14 +66,16 @@
 .rectangle {
     width: 10em;
     height: 5em;
-    background: #e0e0e0;
+    background: #CDF0EA;
+    border: none;
     border-radius: 0.5em;
 }
 .diamond {
     height: 2em;
     width: 2em;
-    background: #b435a3;
+    background: #BEAEE2;
     border-radius: 0.5em;
+    border: none;
     transform: rotate(45deg);
 }
 .diamond:hover {
@@ -74,4 +85,34 @@
 .decision-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.rightLine {
+    height: 1px;
+    background: black;
+    width: 50%;
+}
+.leftLine {
+    height: 1px;
+    background: black;
+    width: 50%;
+    float: right;
+}
+.arrow {
+    height: 1em;
+}
+.show {
+    display: block;
+}
+.delete {
+    cursor: pointer;
+    border: none;
+    top: 0;
+    border-radius: 10px;
+    padding: 10px;
+    background: #424242;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(3em);
 }

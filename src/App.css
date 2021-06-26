@@ -2,6 +2,7 @@ html, head, body, #root {
 height: 100%;
 margin: 0em;
 font-family: Arial, Helvetica, sans-serif;
+text-align: center;
 }
 
 
@@ -21,6 +22,7 @@ font-family: Arial, Helvetica, sans-serif;
 .flow {
   margin: 2em;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
 }
@@ -34,6 +36,14 @@ font-family: Arial, Helvetica, sans-serif;
 .refresh:hover {
   transform:rotate(-360deg)
 }
+
+.print {
+  position: fixed;
+  top: 6em;
+  right: 3em;
+  cursor: pointer;
+}
+
 .heading {
   text-align: left;
   padding: 1em 0.75em;
@@ -42,4 +52,12 @@ font-family: Arial, Helvetica, sans-serif;
   color: #292929;
   font-weight: 900;
   font-size: 1.5em;
+}
+.flowchart-name {
+  margin-top: 2em;
+  border: none;
+  width: 50%;
+  padding: 1em 0em;
+  text-align: center;
+  font-size: 1.3em;
 }
